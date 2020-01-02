@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		53A8C2532246049E00AEE452 /* BSImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 550A315121D5298400AAF718 /* BSImagePicker.framework */; };
-		53A8C2542246049E00AEE452 /* BSImagePicker.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 550A315121D5298400AAF718 /* BSImagePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		550A315621D5298400AAF718 /* BSImagePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 550A315421D5298400AAF718 /* BSImagePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5554729821E4E01700B90CA5 /* AssetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5554729721E4E01700B90CA5 /* AssetStore.swift */; };
 		5569D00721D52A6D00D03631 /* BSImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 550A315121D5298400AAF718 /* BSImagePicker.framework */; };
@@ -17,14 +16,6 @@
 		5569D02521D52B1B00D03631 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5569D02321D52B1B00D03631 /* Main.storyboard */; };
 		5569D02721D52B1B00D03631 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5569D02621D52B1B00D03631 /* Assets.xcassets */; };
 		5569D02A21D52B1B00D03631 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5569D02821D52B1B00D03631 /* LaunchScreen.storyboard */; };
-		559768C821D535DF00B10102 /* BSGridCollectionViewLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55BCF8E321D52CAE00386752 /* BSGridCollectionViewLayout.framework */; };
-		559768C921D535DF00B10102 /* BSImageView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55BCF8E221D52CAE00386752 /* BSImageView.framework */; };
-		559768CB21D5363A00B10102 /* BSGridCollectionViewLayout.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 55BCF8E321D52CAE00386752 /* BSGridCollectionViewLayout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		559768CC21D5363A00B10102 /* BSImageView.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 55BCF8E221D52CAE00386752 /* BSImageView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		559768CD21D5369A00B10102 /* BSGridCollectionViewLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55BCF8E321D52CAE00386752 /* BSGridCollectionViewLayout.framework */; };
-		559768CE21D5369A00B10102 /* BSImageView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55BCF8E221D52CAE00386752 /* BSImageView.framework */; };
-		559768D021D536DD00B10102 /* BSGridCollectionViewLayout.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 55BCF8E321D52CAE00386752 /* BSGridCollectionViewLayout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		559768D121D536DD00B10102 /* BSImageView.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 55BCF8E221D52CAE00386752 /* BSImageView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55BCF8B121D52BA200386752 /* arrow_down@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 55BCF8AA21D52BA200386752 /* arrow_down@3x.png */; };
 		55BCF8B221D52BA200386752 /* ICON-LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 55BCF8AB21D52BA200386752 /* ICON-LICENSE.txt */; };
 		55BCF8B321D52BA200386752 /* add_photo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 55BCF8AC21D52BA200386752 /* add_photo@2x.png */; };
@@ -49,8 +40,6 @@
 		55BCF8DE21D52C1000386752 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF8CC21D52C1000386752 /* PhotosViewController.swift */; };
 		55BCF8DF21D52C1000386752 /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF8CD21D52C1000386752 /* AlbumsViewController.swift */; };
 		55BCF8E021D52C1000386752 /* ZoomAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF8CE21D52C1000386752 /* ZoomAnimator.swift */; };
-		55BCF8E421D52CAE00386752 /* BSImageView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55BCF8E221D52CAE00386752 /* BSImageView.framework */; };
-		55BCF8E521D52CAE00386752 /* BSGridCollectionViewLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55BCF8E321D52CAE00386752 /* BSGridCollectionViewLayout.framework */; };
 		55BCF8EF21D52F3400386752 /* ImagePickerViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF8EB21D52F3400386752 /* ImagePickerViewTests.swift */; };
 		55BCF8F021D52F3400386752 /* ComposedDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF8EC21D52F3400386752 /* ComposedDataSourceTests.swift */; };
 		55BCF8F121D52F3400386752 /* CameraDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF8ED21D52F3400386752 /* CameraDataSourceTests.swift */; };
@@ -89,20 +78,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				559768CB21D5363A00B10102 /* BSGridCollectionViewLayout.framework in CopyFiles */,
-				559768CC21D5363A00B10102 /* BSImageView.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		559768CF21D536D100B10102 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				559768D021D536DD00B10102 /* BSGridCollectionViewLayout.framework in CopyFiles */,
-				53A8C2542246049E00AEE452 /* BSImagePicker.framework in CopyFiles */,
-				559768D121D536DD00B10102 /* BSImageView.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,8 +125,6 @@
 		55BCF8CC21D52C1000386752 /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		55BCF8CD21D52C1000386752 /* AlbumsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
 		55BCF8CE21D52C1000386752 /* ZoomAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomAnimator.swift; sourceTree = "<group>"; };
-		55BCF8E221D52CAE00386752 /* BSImageView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BSImageView.framework; sourceTree = "<group>"; };
-		55BCF8E321D52CAE00386752 /* BSGridCollectionViewLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BSGridCollectionViewLayout.framework; sourceTree = "<group>"; };
 		55BCF8E621D52CE300386752 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		55BCF8E721D52CEC00386752 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		55BCF8E821D52CF600386752 /* BSImagePicker.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = BSImagePicker.podspec; sourceTree = "<group>"; };
@@ -168,8 +141,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55BCF8E521D52CAE00386752 /* BSGridCollectionViewLayout.framework in Frameworks */,
-				55BCF8E421D52CAE00386752 /* BSImageView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,8 +148,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				559768C921D535DF00B10102 /* BSImageView.framework in Frameworks */,
-				559768C821D535DF00B10102 /* BSGridCollectionViewLayout.framework in Frameworks */,
 				5569D00721D52A6D00D03631 /* BSImagePicker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -187,9 +156,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				559768CD21D5369A00B10102 /* BSGridCollectionViewLayout.framework in Frameworks */,
 				53A8C2532246049E00AEE452 /* BSImagePicker.framework in Frameworks */,
-				559768CE21D5369A00B10102 /* BSImageView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,7 +177,6 @@
 				559768D421D53EC100B10102 /* TODO.md */,
 				550A315321D5298400AAF718 /* Sources */,
 				55BCF8A921D52B4A00386752 /* Resources */,
-				55BCF8E121D52C7200386752 /* Frameworks */,
 				5569D01E21D52B1B00D03631 /* Examples */,
 				5569D00321D52A6D00D03631 /* Tests */,
 				5569D03421D52B2A00D03631 /* UITests */,
@@ -347,15 +313,6 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		55BCF8E121D52C7200386752 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				55BCF8E321D52CAE00386752 /* BSGridCollectionViewLayout.framework */,
-				55BCF8E221D52CAE00386752 /* BSImageView.framework */,
-			);
-			path = Frameworks;
-			sourceTree = "<group>";
-		};
 		55BCF8EA21D52D4700386752 /* Dependency Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -423,7 +380,7 @@
 				5569D01921D52B1B00D03631 /* Sources */,
 				5569D01A21D52B1B00D03631 /* Frameworks */,
 				5569D01B21D52B1B00D03631 /* Resources */,
-				559768CF21D536D100B10102 /* CopyFiles */,
+				5B803BBA23BDC125001678DC /* Copy Carthage-built Frameworks */,
 			);
 			buildRules = (
 			);
@@ -548,6 +505,29 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5B803BBA23BDC125001678DC /* Copy Carthage-built Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/BSImageView.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/BSGridCollectionViewLayout.framework",
+			);
+			name = "Copy Carthage-built Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		550A314D21D5298400AAF718 /* Sources */ = {
@@ -777,10 +757,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -806,10 +787,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -880,7 +862,7 @@
 				DEVELOPMENT_TEAM = Y2NHS7RD78;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Examples/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -902,7 +884,7 @@
 				DEVELOPMENT_TEAM = Y2NHS7RD78;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Examples/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
