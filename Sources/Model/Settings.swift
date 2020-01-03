@@ -59,3 +59,14 @@ final class Settings : BSImagePickerSettings {
     
     var takePhotoIcon: UIImage? = UIImage(named: "add_photo", in: BSImagePickerViewController.bundle, compatibleWith: nil)
 }
+
+extension UIColor {
+    static var bsBackgroundColor: UIColor {
+        if #available(iOS 13.0, *) {
+            return .systemBackground
+        } else {
+            // Fallback on earlier versions
+            return .white
+        }
+    }
+}

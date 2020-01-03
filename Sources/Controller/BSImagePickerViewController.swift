@@ -153,7 +153,7 @@ open class BSImagePickerViewController : UINavigationController {
         super.loadView()
         
         // TODO: Settings
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.bsBackgroundColor
         
         // Make sure we really are authorized
         if PHPhotoLibrary.authorizationStatus() == .authorized {
