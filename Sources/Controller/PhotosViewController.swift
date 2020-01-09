@@ -31,6 +31,7 @@ final class PhotosViewController : UICollectionViewController {
     var finishClosure: ((_ assets: [PHAsset]) -> Void)?
     var selectLimitReachedClosure: ((_ selectionLimit: Int) -> Void)?
     
+    var selectionCountButton: UIBarButtonItem?
     var doneBarButton: UIBarButtonItem?
     var cancelBarButton: UIBarButtonItem?
     var albumTitleView: UIButton?
@@ -95,8 +96,10 @@ final class PhotosViewController : UICollectionViewController {
         cancelBarButton?.target = self
         cancelBarButton?.action = #selector(PhotosViewController.cancelButtonPressed(_:))
         albumTitleView?.addTarget(self, action: #selector(PhotosViewController.albumButtonPressed(_:)), for: .touchUpInside)
+        selectionCountButton = UIBarButtonItem.init(title: nil, style: .done, target: nil, action: nil)
+        selectionCountButton?.tintColor = doneBarButton?.tintColor
         navigationItem.leftBarButtonItem = cancelBarButton
-        navigationItem.rightBarButtonItem = doneBarButton
+        navigationItem.rightBarButtonItems = [doneBarButton, selectionCountButton].compactMap{ $0 }
         navigationItem.titleView = albumTitleView
 
         if let album = albumsDataSource.fetchResults.first?.firstObject {
@@ -193,16 +196,12 @@ final class PhotosViewController : UICollectionViewController {
     
     // MARK: Private helper methods
     func updateDoneButton() {
-        if assetStore.assets.count > 0 {
-            doneBarButton = UIBarButtonItem(title: "\(doneBarButtonTitle) (\(assetStore.count))", style: .done, target: doneBarButton?.target, action: doneBarButton?.action)
-        } else {
-            doneBarButton = UIBarButtonItem(title: doneBarButtonTitle, style: .done, target: doneBarButton?.target, action: doneBarButton?.action)
-        }
-
+        let assetsCount = assetStore.assets.count
+        let formatter = NumberFormatter.init()
+        formatter.zeroSymbol = ""
+        selectionCountButton?.title = formatter.string(from: NSNumber(value: assetsCount))
         // Enabled?
-        doneBarButton?.isEnabled = assetStore.assets.count > 0
-
-        navigationItem.rightBarButtonItem = doneBarButton
+        doneBarButton?.isEnabled = assetsCount > 0
     }
 
     func updateAlbumTitle(_ album: PHAssetCollection) {
