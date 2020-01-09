@@ -39,6 +39,7 @@ final class CameraCell: UICollectionViewCell {
         imageView.frame = contentView.bounds
         imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         imageView.contentMode = .center
+        imageView.tintColor = .white
         contentView.addSubview(imageView)
 
         setupCaptureLayer()
