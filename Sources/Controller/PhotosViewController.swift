@@ -289,8 +289,12 @@ extension PhotosViewController: PhotoCellDelegate {
                        navigationController?.pushViewController(vc, animated: true)
                    }
         }
-        
-        asset.requestContentEditingInput(with: nil, completionHandler: { (contentEditingInput, info) in
+        let options: PHContentEditingInputRequestOptions = PHContentEditingInputRequestOptions()
+        options.isNetworkAccessAllowed = true
+        options.canHandleAdjustmentData = { _ in
+             return true
+        }
+        asset.requestContentEditingInput(with: options, completionHandler: { (contentEditingInput, info) in
             guard let url = contentEditingInput?.fullSizeImageURL else {
                 handleNoneNavtivePic()
                 return
