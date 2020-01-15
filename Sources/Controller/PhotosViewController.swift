@@ -247,7 +247,7 @@ extension PhotosViewController: PhotoCellDelegate {
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         // NOTE: ALWAYS return false. We don't want the collectionView to be the source of thruth regarding selections
         // We can manage it ourself.
-
+        
         // Camera shouldn't be selected, but pop the UIImagePickerController!
         if let composedDataSource = composedDataSource , composedDataSource.dataSources[indexPath.section].isEqual(cameraDataSource) {
             let cameraController = UIImagePickerController()
@@ -259,50 +259,61 @@ extension PhotosViewController: PhotoCellDelegate {
             
             return false
         }
-
+        
         // Make sure we have a data source and that we can make selections
         guard let photosDataSource = photosDataSource, collectionView.isUserInteractionEnabled else { return false }
-
+        
         // We need a cell
         guard let cell = collectionView.cellForItem(at: indexPath) as? PhotoCell else { return false }
         let asset = photosDataSource.fetchResult.object(at: indexPath.row)
         
         func handleNoneNavtivePic() {
             if let vc = previewViewContoller {
-                       // Setup fetch options to be synchronous
-                       let options = PHImageRequestOptions()
-                       options.isNetworkAccessAllowed = true
-                       
-                       // Load image for preview
-                       if let imageView = vc.imageView {
-                           PHCachingImageManager.default().requestImage(for: asset, targetSize:imageView.frame.size, contentMode: .aspectFit, options: options) { (result, _) in
-                               imageView.image = result
-                           }
-                       }
-                       
-                       // Setup animation
-                       expandAnimator.sourceImageView = cell.imageView
-                       expandAnimator.destinationImageView = vc.imageView
-                       shrinkAnimator.sourceImageView = vc.imageView
-                       shrinkAnimator.destinationImageView = cell.imageView
-                       
-                       navigationController?.pushViewController(vc, animated: true)
-                   }
+                // Setup fetch options to be synchronous
+                let options = PHImageRequestOptions()
+                options.isNetworkAccessAllowed = true
+                
+                // Load image for preview
+                if let imageView = vc.imageView {
+                    PHCachingImageManager.default().requestImage(for: asset, targetSize:imageView.frame.size, contentMode: .aspectFit, options: options) { (result, _) in
+                        imageView.image = result
+                    }
+                }
+                
+                // Setup animation
+                expandAnimator.sourceImageView = cell.imageView
+                expandAnimator.destinationImageView = vc.imageView
+                shrinkAnimator.sourceImageView = vc.imageView
+                shrinkAnimator.destinationImageView = cell.imageView
+                
+                navigationController?.pushViewController(vc, animated: true)
+            }
         }
-        let options: PHContentEditingInputRequestOptions = PHContentEditingInputRequestOptions()
-        options.isNetworkAccessAllowed = true
-        options.canHandleAdjustmentData = { _ in
-             return true
-        }
-        asset.requestContentEditingInput(with: options, completionHandler: { (contentEditingInput, info) in
+        asset.requestContentEditingInput(with: nil, completionHandler: { (contentEditingInput, info) in
             guard let url = contentEditingInput?.fullSizeImageURL else {
                 handleNoneNavtivePic()
                 return
             }
-            let docController = UIDocumentInteractionController.init(url: url)
-            docController.delegate = self
-            docController.presentPreview(animated: true)
             /// Using this `url`
+            let destination = FileManager.default.temporaryDirectory.appendingPathComponent(url.lastPathComponent)
+            func presentDocController() {
+                DispatchQueue.main.async {
+                    let docController = UIDocumentInteractionController.init(url: destination)
+                    docController.delegate = self
+                    docController.presentPreview(animated: true)
+                }
+            }
+            if FileManager.default.fileExists(atPath: destination.path) {
+                presentDocController()
+            } else {
+                do {
+                    try FileManager.default.copyItem(at: url, to: destination)
+                    presentDocController()
+                } catch {
+                    debugPrint(error)
+                    handleNoneNavtivePic()
+                }
+            }
         })
         return false
     }
