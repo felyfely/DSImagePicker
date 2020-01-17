@@ -26,7 +26,7 @@ import UIKit
 Used as an overlay on selected cells
 */
 @IBDesignable final class SelectionView: UIView {
-    let emptyColor = UIColor.clear
+    let emptyColor = UIColor.black.withAlphaComponent(0.15)
     
     var selectionString: String = "" {
         didSet {
