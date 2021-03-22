@@ -38,8 +38,6 @@ bs_presentImagePickerController(vc, animated: true,
 * Take photos (it isn't enabled by default, so set takePhotos to true if you want it).
 * Customizable - check out BSImagePickerSettings to see what you can tweak.
 
-* Improvement upon origianl BSImagePicker including a better imageviewer, faster response time, and allow selection through right top corner and tap to view image instead of long press
-
 ## Customization
 
 You have access to the cancel, album and done button. Customize them as you would with any other UIBarButtonItem (cancel & finish) or UIButton (album).<br />
