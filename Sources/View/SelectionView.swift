@@ -26,8 +26,6 @@ import UIKit
 Used as an overlay on selected cells
 */
 @IBDesignable final class SelectionView: UIView {
-    let emptyColor = UIColor.clear
-    
     var selectionString: String = "" {
         didSet {
             if selectionString != oldValue {
@@ -68,11 +66,7 @@ Used as an overlay on selected cells
         let checkedOvalPath = UIBezierPath(ovalIn: CGRect(x: group.minX + floor(group.width * 0.0 + 0.5), y: group.minY + floor(group.height * 0.0 + 0.5), width: floor(group.width * 1.0 + 0.5) - floor(group.width * 0.0 + 0.5), height: floor(group.height * 1.0 + 0.5) - floor(group.height * 0.0 + 0.5)))
         context?.saveGState()
         context?.setShadow(offset: shadow2Offset, blur: shadow2BlurRadius, color: settings.selectionShadowColor.cgColor)
-        if selectionString.isEmpty {
-            emptyColor.setFill()
-        } else {
-            settings.selectionFillColor.setFill()
-        }
+        settings.selectionFillColor.setFill()
         checkedOvalPath.fill()
         context?.restoreGState()
         
