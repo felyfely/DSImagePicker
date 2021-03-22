@@ -266,40 +266,26 @@ extension PhotosViewController: PhotoCellDelegate {
         // We need a cell
         guard let cell = collectionView.cellForItem(at: indexPath) as? PhotoCell else { return false }
         let asset = photosDataSource.fetchResult.object(at: indexPath.row)
-        
-        func handleNoneNavtivePic() {
-            if let vc = previewViewContoller {
-                       // Setup fetch options to be synchronous
-                       let options = PHImageRequestOptions()
-                       options.isNetworkAccessAllowed = true
-                       
-                       // Load image for preview
-                       if let imageView = vc.imageView {
-                           PHCachingImageManager.default().requestImage(for: asset, targetSize:imageView.frame.size, contentMode: .aspectFit, options: options) { (result, _) in
-                               imageView.image = result
-                           }
-                       }
-                       
-                       // Setup animation
-                       expandAnimator.sourceImageView = cell.imageView
-                       expandAnimator.destinationImageView = vc.imageView
-                       shrinkAnimator.sourceImageView = vc.imageView
-                       shrinkAnimator.destinationImageView = cell.imageView
-                       
-                       navigationController?.pushViewController(vc, animated: true)
-                   }
-        }
-        
-        asset.requestContentEditingInput(with: nil, completionHandler: { (contentEditingInput, info) in
-            guard let url = contentEditingInput?.fullSizeImageURL else {
-                handleNoneNavtivePic()
-                return
+        if let vc = previewViewContoller {
+            // Setup fetch options to be synchronous
+            let options = PHImageRequestOptions()
+            options.isNetworkAccessAllowed = true
+            
+            // Load image for preview
+            if let imageView = vc.imageView {
+                PHCachingImageManager.default().requestImage(for: asset, targetSize:imageView.frame.size, contentMode: .aspectFit, options: options) { (result, _) in
+                    imageView.image = result
+                }
             }
-            let docController = UIDocumentInteractionController.init(url: url)
-            docController.delegate = self
-            docController.presentPreview(animated: true)
-            /// Using this `url`
-        })
+            
+            // Setup animation
+            expandAnimator.sourceImageView = cell.imageView
+            expandAnimator.destinationImageView = vc.imageView
+            shrinkAnimator.sourceImageView = vc.imageView
+            shrinkAnimator.destinationImageView = cell.imageView
+            
+            navigationController?.pushViewController(vc, animated: true)
+        }
         return false
     }
     
@@ -313,12 +299,6 @@ extension PhotosViewController: PhotoCellDelegate {
         
         cell.startLiveBackground() // Start live background
     }
-}
-
-extension PhotosViewController: UIDocumentInteractionControllerDelegate {
-    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
-           return self//or use return self.navigationController for fetching app navigation bar colour
-       }
 }
 
 // MARK: UIPopoverPresentationControllerDelegate
