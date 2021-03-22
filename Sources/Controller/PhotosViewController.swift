@@ -108,6 +108,11 @@ final class PhotosViewController : UICollectionViewController {
             collectionView?.reloadData()
         }
         
+        // Add long press recognizer
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(PhotosViewController.collectionViewLongPressed(_:)))
+        longPressRecognizer.minimumPressDuration = 0.5
+        collectionView?.addGestureRecognizer(longPressRecognizer)
+        
         // Set navigation controller delegate
         navigationController?.delegate = self
         
@@ -149,7 +154,46 @@ final class PhotosViewController : UICollectionViewController {
         
         present(albumsViewController, animated: true, completion: nil)
     }
-        
+    
+    @objc func collectionViewLongPressed(_ sender: UIGestureRecognizer) {
+        if sender.state == .began {
+            // Disable recognizer while we are figuring out location and pushing preview
+            sender.isEnabled = false
+            collectionView?.isUserInteractionEnabled = false
+            
+            // Calculate which index path long press came from
+            let location = sender.location(in: collectionView)
+            let indexPath = collectionView?.indexPathForItem(at: location)
+            
+            if let vc = previewViewContoller, let indexPath = indexPath, let cell = collectionView?.cellForItem(at: indexPath) as? PhotoCell, let asset = cell.asset {
+                // Setup fetch options to be synchronous
+                let options = PHImageRequestOptions()
+                options.isNetworkAccessAllowed = true
+                
+                // Load image for preview
+                if let imageView = vc.imageView {
+                    PHCachingImageManager.default().requestImage(for: asset, targetSize:imageView.frame.size, contentMode: .aspectFit, options: options) { (result, _) in
+                        imageView.image = result
+                    }
+                }
+                
+                // Setup animation
+                expandAnimator.sourceImageView = cell.imageView
+                expandAnimator.destinationImageView = vc.imageView
+                shrinkAnimator.sourceImageView = vc.imageView
+                shrinkAnimator.destinationImageView = cell.imageView
+                
+                navigationController?.pushViewController(vc, animated: true)
+            }
+            
+            // Re-enable recognizer, after animation is done
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(expandAnimator.transitionDuration(using: nil) * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: { () -> Void in
+                sender.isEnabled = true
+                self.collectionView?.isUserInteractionEnabled = true
+            })
+        }
+    }
+    
     // MARK: Private helper methods
     func updateDoneButton() {
         let assetsCount = assetStore.assets.count
@@ -193,10 +237,31 @@ final class PhotosViewController : UICollectionViewController {
 }
 
 // MARK: UICollectionViewDelegate
-extension PhotosViewController: PhotoCellDelegate {
-    func didTapOnSelectionView(asset: PHAsset?, cell: PhotoCell) {
+extension PhotosViewController {
+    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        // NOTE: ALWAYS return false. We don't want the collectionView to be the source of thruth regarding selections
+        // We can manage it ourself.
+
+        // Camera shouldn't be selected, but pop the UIImagePickerController!
+        if let composedDataSource = composedDataSource , composedDataSource.dataSources[indexPath.section].isEqual(cameraDataSource) {
+            let cameraController = UIImagePickerController()
+            cameraController.allowsEditing = false
+            cameraController.sourceType = .camera
+            cameraController.delegate = self
+            
+            self.present(cameraController, animated: true, completion: nil)
+            
+            return false
+        }
+
+        // Make sure we have a data source and that we can make selections
+        guard let photosDataSource = photosDataSource, collectionView.isUserInteractionEnabled else { return false }
+
+        // We need a cell
+        guard let cell = collectionView.cellForItem(at: indexPath) as? PhotoCell else { return false }
+        let asset = photosDataSource.fetchResult.object(at: indexPath.row)
+
         // Select or deselect?
-        guard let asset = asset, let photosDataSource = photosDataSource, collectionView.isUserInteractionEnabled else { return }
         if assetStore.contains(asset) { // Deselect
             // Deselect asset
             assetStore.remove(asset)
@@ -242,57 +307,10 @@ extension PhotosViewController: PhotoCellDelegate {
             selectLimitReachedClosure?(assetStore.count)
         }
 
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        // NOTE: ALWAYS return false. We don't want the collectionView to be the source of thruth regarding selections
-        // We can manage it ourself.
-
-        // Camera shouldn't be selected, but pop the UIImagePickerController!
-        if let composedDataSource = composedDataSource , composedDataSource.dataSources[indexPath.section].isEqual(cameraDataSource) {
-            let cameraController = UIImagePickerController()
-            cameraController.allowsEditing = false
-            cameraController.sourceType = .camera
-            cameraController.delegate = self
-            
-            self.present(cameraController, animated: true, completion: nil)
-            
-            return false
-        }
-
-        // Make sure we have a data source and that we can make selections
-        guard let photosDataSource = photosDataSource, collectionView.isUserInteractionEnabled else { return false }
-
-        // We need a cell
-        guard let cell = collectionView.cellForItem(at: indexPath) as? PhotoCell else { return false }
-        let asset = photosDataSource.fetchResult.object(at: indexPath.row)
-        if let vc = previewViewContoller {
-            // Setup fetch options to be synchronous
-            let options = PHImageRequestOptions()
-            options.isNetworkAccessAllowed = true
-            
-            // Load image for preview
-            if let imageView = vc.imageView {
-                PHCachingImageManager.default().requestImage(for: asset, targetSize:imageView.frame.size, contentMode: .aspectFit, options: options) { (result, _) in
-                    imageView.image = result
-                }
-            }
-            
-            // Setup animation
-            expandAnimator.sourceImageView = cell.imageView
-            expandAnimator.destinationImageView = vc.imageView
-            shrinkAnimator.sourceImageView = vc.imageView
-            shrinkAnimator.destinationImageView = cell.imageView
-            
-            navigationController?.pushViewController(vc, animated: true)
-        }
         return false
     }
     
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if let cell = cell as? PhotoCell, cell.delegate == nil {
-            cell.delegate = self
-        }
         guard let cell = cell as? CameraCell else {
             return
         }

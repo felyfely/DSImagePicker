@@ -57,7 +57,7 @@ Used as an overlay on selected cells
         let shadow2BlurRadius: CGFloat = 2.5;
         
         //// Frames
-        let checkmarkFrame = bounds.insetBy(dx: 10, dy: 10);
+        let checkmarkFrame = bounds;
         
         //// Subframes
         let group = CGRect(x: checkmarkFrame.minX + 3, y: checkmarkFrame.minY + 3, width: checkmarkFrame.width - 6, height: checkmarkFrame.height - 6)

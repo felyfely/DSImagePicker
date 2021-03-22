@@ -23,16 +23,10 @@
 import UIKit
 import Photos
 
-protocol PhotoCellDelegate: NSObjectProtocol {
-    func didTapOnSelectionView(asset: PHAsset?, cell: PhotoCell)
-}
 /**
 The photo cell.
 */
 final class PhotoCell: UICollectionViewCell {
-    
-    weak var delegate: PhotoCellDelegate?
-    
     static let cellIdentifier = "photoCellIdentifier"
     
     let imageView: UIImageView = UIImageView(frame: .zero)
@@ -107,17 +101,11 @@ final class PhotoCell: UICollectionViewCell {
             selectionOverlayView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             selectionOverlayView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             selectionOverlayView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            selectionView.heightAnchor.constraint(equalToConstant: 44),
-            selectionView.widthAnchor.constraint(equalToConstant: 44),
-            selectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            selectionView.topAnchor.constraint(equalTo: contentView.topAnchor)
+            selectionView.heightAnchor.constraint(equalToConstant: 25),
+            selectionView.widthAnchor.constraint(equalToConstant: 25),
+            selectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4),
+            selectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4)
         ])
-        
-        selectionView.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(tappedOnSelection(_:))))
-    }
-    
-    @objc func tappedOnSelection(_ tap: UITapGestureRecognizer) {
-        delegate?.didTapOnSelectionView(asset: asset, cell: self)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -135,13 +123,11 @@ final class PhotoCell: UICollectionViewCell {
     
     private func updateAlpha(_ selected: Bool) {
         if selected == true {
-//            self.selectionView.alpha = 1.0
+            self.selectionView.alpha = 1.0
             self.selectionOverlayView.alpha = 0.3
-        }
-        else {
-//            self.selectionView.alpha = 0.0
+        } else {
+            self.selectionView.alpha = 0.0
             self.selectionOverlayView.alpha = 0.0
-            selectionString = ""
         }
     }
 }
