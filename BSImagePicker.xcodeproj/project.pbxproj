@@ -16,7 +16,10 @@
 		5569D02521D52B1B00D03631 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5569D02321D52B1B00D03631 /* Main.storyboard */; };
 		5569D02721D52B1B00D03631 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5569D02621D52B1B00D03631 /* Assets.xcassets */; };
 		5569D02A21D52B1B00D03631 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5569D02821D52B1B00D03631 /* LaunchScreen.storyboard */; };
+		55BCF8B121D52BA200386752 /* arrow_down@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 55BCF8AA21D52BA200386752 /* arrow_down@3x.png */; };
 		55BCF8B221D52BA200386752 /* ICON-LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 55BCF8AB21D52BA200386752 /* ICON-LICENSE.txt */; };
+		55BCF8B421D52BA200386752 /* arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 55BCF8AD21D52BA200386752 /* arrow_down@2x.png */; };
+		55BCF8B621D52BA200386752 /* arrow_down@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 55BCF8AF21D52BA200386752 /* arrow_down@1x.png */; };
 		55BCF8CF21D52C1000386752 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF8B921D52C1000386752 /* Settings.swift */; };
 		55BCF8D021D52C1000386752 /* AlbumTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF8BA21D52C1000386752 /* AlbumTableViewDataSource.swift */; };
 		55BCF8D121D52C1000386752 /* ComposedCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF8BB21D52C1000386752 /* ComposedCollectionViewDataSource.swift */; };
@@ -39,7 +42,7 @@
 		55BCF8F121D52F3400386752 /* CameraDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF8ED21D52F3400386752 /* CameraDataSourceTests.swift */; };
 		55BCF8F221D52F3400386752 /* NSIndexSetIndexPathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF8EE21D52F3400386752 /* NSIndexSetIndexPathTests.swift */; };
 		55BCF8F421D5326A00386752 /* BSImagePicker_UI_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF8F321D5326A00386752 /* BSImagePicker_UI_Tests.swift */; };
-		5BFBE9B623C70AB200CE2165 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BFBE9B523C70AB200CE2165 /* Assets.xcassets */; };
+		5BFBE9B423C708C600CE2165 /* add_photo.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 5BFBE9B323C708C600CE2165 /* add_photo.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,7 +99,10 @@
 		5569D03721D52B2A00D03631 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		559768D221D537B000B10102 /* Examples.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = Examples.entitlements; path = OLD/Example/Examples.entitlements; sourceTree = SOURCE_ROOT; };
 		559768D421D53EC100B10102 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
+		55BCF8AA21D52BA200386752 /* arrow_down@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_down@3x.png"; sourceTree = "<group>"; };
 		55BCF8AB21D52BA200386752 /* ICON-LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ICON-LICENSE.txt"; sourceTree = "<group>"; };
+		55BCF8AD21D52BA200386752 /* arrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_down@2x.png"; sourceTree = "<group>"; };
+		55BCF8AF21D52BA200386752 /* arrow_down@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_down@1x.png"; sourceTree = "<group>"; };
 		55BCF8B921D52C1000386752 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		55BCF8BA21D52C1000386752 /* AlbumTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumTableViewDataSource.swift; sourceTree = "<group>"; };
 		55BCF8BB21D52C1000386752 /* ComposedCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposedCollectionViewDataSource.swift; sourceTree = "<group>"; };
@@ -123,7 +129,7 @@
 		55BCF8ED21D52F3400386752 /* CameraDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraDataSourceTests.swift; sourceTree = "<group>"; };
 		55BCF8EE21D52F3400386752 /* NSIndexSetIndexPathTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSIndexSetIndexPathTests.swift; sourceTree = "<group>"; };
 		55BCF8F321D5326A00386752 /* BSImagePicker_UI_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSImagePicker_UI_Tests.swift; sourceTree = "<group>"; };
-		5BFBE9B523C70AB200CE2165 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5BFBE9B323C708C600CE2165 /* add_photo.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = add_photo.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,7 +245,10 @@
 		55BCF8A921D52B4A00386752 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				5BFBE9B523C70AB200CE2165 /* Assets.xcassets */,
+				5BFBE9B323C708C600CE2165 /* add_photo.pdf */,
+				55BCF8AF21D52BA200386752 /* arrow_down@1x.png */,
+				55BCF8AD21D52BA200386752 /* arrow_down@2x.png */,
+				55BCF8AA21D52BA200386752 /* arrow_down@3x.png */,
 				55BCF8AB21D52BA200386752 /* ICON-LICENSE.txt */,
 			);
 			path = Resources;
@@ -455,7 +464,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BFBE9B623C70AB200CE2165 /* Assets.xcassets in Resources */,
+				55BCF8B421D52BA200386752 /* arrow_down@2x.png in Resources */,
+				5BFBE9B423C708C600CE2165 /* add_photo.pdf in Resources */,
+				55BCF8B621D52BA200386752 /* arrow_down@1x.png in Resources */,
+				55BCF8B121D52BA200386752 /* arrow_down@3x.png in Resources */,
 				55BCF8B221D52BA200386752 /* ICON-LICENSE.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
