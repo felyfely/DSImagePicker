@@ -29,7 +29,7 @@ final class PreviewViewController : UIViewController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
-        view.backgroundColor = UIColor.bsBackgroundColor
+        view.backgroundColor = UIColor.white
         
         imageView = UIImageView(frame: view.bounds)
         imageView?.contentMode = .scaleAspectFit
@@ -73,7 +73,7 @@ final class PreviewViewController : UIViewController {
         if self.fullscreen {
             aColor = UIColor.black
         } else {
-            aColor = UIColor.bsBackgroundColor
+            aColor = UIColor.white
         }
         
         self.view.backgroundColor = aColor
